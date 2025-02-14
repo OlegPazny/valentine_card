@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️ 8-битная Валентинка ❤️</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div class="section">С Днем Святого Валентина, моя любовь! 💖</div>
+        <div class="section">Ты делаешь этот мир лучше!</div>
+        <div class="section">Каждый момент с тобой бесценен! 💕</div>
+    </div>
+    <div class="main">
+        <div class="heart pulse"></div>
+      </div>
+    <div class="final-section">
+        <div class="heart"></div>
+        <div>Станешь ли ты моей валентинкой?</div>
+        <div class="buttons-container">
+            <div class="button-wrapper">
+                <button class="yes-button" onclick="alert('Урааааааа Я тебя люблю! 💖')">Да</button>
+            </div>
+            <div class="button-wrapper">
+                <button class="no-button">Нет</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const noButton = document.querySelector('.no-button');
+        const yesButton = document.querySelector('.yes-button');
+        const threshold = 150;
+
+        document.addEventListener('mousemove', (event) => {
+            const rectNo = noButton.getBoundingClientRect();
+            const rectYes = yesButton.getBoundingClientRect();
+            
+            // let dxNo = event.clientX - (rectNo.x + rectNo.width / 2);
+            // let dyNo = event.clientY - (rectNo.y + rectNo.height / 2);
+            // let distanceNo = Math.sqrt(dxNo * dxNo + dyNo * dyNo);
+            
+            let dxNo = event.clientX - (rectNo.x + rectNo.width / 2);
+            let dyNo = event.clientY - (rectNo.y + rectNo.height / 2);
+            let distanceNo = Math.sqrt(dxNo * dxNo + dyNo * dyNo);
+            
+            // if (distanceNo < threshold) {
+            //     let moveX = (dxNo / distanceNo) * (threshold - distanceNo);
+            //     let moveY = (dyNo / distanceNo) * (threshold - distanceNo);
+            //     noButton.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            // } else {
+            //     noButton.style.transform = '';
+            // }
+            
+            if (distanceNo < threshold) {
+                let moveX = -(dxNo / distanceNo) * (threshold - distanceNo);
+                let moveY = -(dyNo / distanceNo) * (threshold - distanceNo);
+                noButton.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            } else {
+                noButton.style.transform = '';
+            }
+        });
+    </script>
+</body>
+</html>
